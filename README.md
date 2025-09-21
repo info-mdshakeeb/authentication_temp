@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Authentication Temp
+
+A modern, scalable authentication starter built with [Next.js](https://nextjs.org), TypeScript, and Tailwind CSS. This project provides a robust foundation for building secure, production-ready authentication flows in your web applications.
+
+## Project Overview
+
+This repository is designed to help you quickly bootstrap authentication features in your Next.js projects. It includes best practices for code structure, type safety, and developer experience, making it easy to extend and customize for your needs.
+
+## Features
+
+- ⚡️ Next.js 15 (App Router, Server Components)
+- 🛡️ TypeScript strict mode for type safety
+- 🎨 Tailwind CSS for rapid UI development
+- 🔒 Ready for secure authentication flows
+- 🧩 Modular, scalable project structure
+- 🛠️ ESLint & Prettier for code quality
+- 🌱 Environment variable management with Zod
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) 15
+- [React](https://react.dev/) 19
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Zod](https://zod.dev/) for schema validation
+- [ESLint](https://eslint.org/) for linting
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   pnpm install
+   # or
+   npm install
+   # or
+   yarn install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Run the development server:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-## Learn More
+3. **Build for production:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   pnpm build
+   # or
+   npm run build
+   # or
+   yarn build
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/app/` — Main application code (pages, layouts, components)
+- `public/` — Static assets
+- `tsconfig.json` — TypeScript configuration
+- `eslint.config.mjs` — ESLint configuration
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please open an issue or submit a pull request for improvements or bug fixes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
