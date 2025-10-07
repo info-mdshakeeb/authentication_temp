@@ -10,14 +10,14 @@ Kickstart a production-ready authentication experience with [Next.js](https://ne
 
    - Run the interactive CLI (requires Node 18+):
      ```bash
-     npx github:info-mdshakeeb/next-temp
+      npx github:info-mdshakeeb/next_temp
      ```
      You'll be asked for a project name, description, preferred package manager, whether to install dependencies, whether to enable Changesets, and whether to initialize Git. The generator copies this template, tailors `package.json`, and applies those choices for you.
    - Automate scaffolding (CI, local testing) by forwarding flags after `--`:
      ```bash
-     npx github:info-mdshakeeb/next-temp -- --defaults --name my-app --skip-install
+       npx github:info-mdshakeeb/next_temp -- --defaults --name my-app --skip-install
      ```
-     Available helpers include:
+     Available helpers include (use the underscore in the repo slug when calling via GitHub):
    - `--defaults`/`-y`
    - `--name`, `--description`
    - `--package-manager`
