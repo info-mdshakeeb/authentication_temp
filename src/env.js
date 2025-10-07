@@ -12,9 +12,6 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
 
-    // NextAuth settings
-    AUTH_TRUST_HOST: z.string().optional(),
-    NEXTAUTH_URL: z.string(),
   },
 
   /**
@@ -33,10 +30,6 @@ export const env = createEnv({
   runtimeEnv: {
     AUTH_SECRET: process.env.AUTH_SECRET,
     NODE_ENV: process.env.NODE_ENV,
-
-    AUTH_TRUST_HOST: process.env.AUTH_TRUST_HOST,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-
 
     // Client
     // NEXT_PUBLIC_SERVER_FILE_UPLOAD_URL:
