@@ -12,7 +12,6 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
 
-
   },
 
   /**
@@ -31,9 +30,6 @@ export const env = createEnv({
   runtimeEnv: {
     AUTH_SECRET: process.env.AUTH_SECRET,
     NODE_ENV: process.env.NODE_ENV,
-
-
-
 
     // Client
     // NEXT_PUBLIC_SERVER_FILE_UPLOAD_URL:
