@@ -8,13 +8,25 @@ Kickstart a production-ready authentication experience with [Next.js](https://ne
 
 1. **Create your project**
 
-   - On GitHub, click **Use this template → Create a new repository**.
-   - Or scaffold locally with degit:
+   - Run the interactive CLI (requires Node 18+):
      ```bash
-     npx degit info-mdshakeeb/next_temp my-app
-     cd my-app
-     git init && git add . && git commit -m "chore: bootstrap from template"
+     npx github:info-mdshakeeb/next-temp
      ```
+     You'll be asked for a project name, description, preferred package manager, whether to install dependencies, whether to enable Changesets, and whether to initialize Git. The generator copies this template, tailors `package.json`, and applies those choices for you.
+   - Automate scaffolding (CI, local testing) by forwarding flags after `--`:
+     ```bash
+     npx github:info-mdshakeeb/next-temp -- --defaults --name my-app --skip-install
+     ```
+     Available helpers include:
+   - `--defaults`/`-y`
+   - `--name`, `--description`
+   - `--package-manager`
+   - `--install yes|no`, `--skip-install`
+   - `--changesets yes|no`, `--with-changesets`, `--no-changesets`
+   - `--git yes|no`, `--git-init`, `--no-git`
+   - `--force` to overwrite existing directories
+     The scaffold finishes by clearing the README to a simple placeholder and omitting repository-only files (`LICENSE`, `CHANGELOG.md`, generator scripts) so you can replace them with project-specific docs.
+   - Prefer GitHub UI instead? Click **Use this template → Create a new repository**.
 
 2. **Install dependencies**
 
@@ -22,6 +34,8 @@ Kickstart a production-ready authentication experience with [Next.js](https://ne
    pnpm install
    # npm install | yarn install also work, but pnpm is recommended
    ```
+
+   _Skip this step if you let the generator install dependencies for you._
 
 3. **Configure environment variables**
 
@@ -69,7 +83,7 @@ src/
   env.js       # Runtime-safe environment management
 public/        # Static assets
 .github/       # CI, templates, Dependabot
-.changeset/    # Release notes + version strategy
+.changeset/    # Release notes + version strategy (optional during scaffold)
 ```
 
 ---
@@ -116,25 +130,13 @@ pnpm build
 
 ## 📦 Release workflow
 
+If you scaffolded with Changesets enabled, use this flow:
+
 1. Create a branch for your change.
 2. Run `pnpm changeset` and follow the prompts to note the update.
 3. Commit your code + the generated `.changeset/*.md` file.
 4. When changes land on `main`, run `pnpm release` to bump versions and update the changelog.
 5. Tag the release (`git tag vX.Y.Z && git push origin vX.Y.Z`) and publish on GitHub.
-
----
-
-## 🤝 Contributing
-
-- Read the [Contributing Guide](./CONTRIBUTING.md) for branching, commits, and testing expectations.
-- Review the [Code of Conduct](./CODE_OF_CONDUCT.md) to ensure a welcoming community.
-- Open issues using the provided templates:
-  - [Bug report](./.github/ISSUE_TEMPLATE/bug_report.md)
-  - [Feature request](./.github/ISSUE_TEMPLATE/feature_request.md)
-
-Pull requests should target `main` and must pass CI.
-
----
 
 ## 👨‍💻 Maintainer
 

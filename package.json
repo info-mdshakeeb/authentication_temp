@@ -1,8 +1,9 @@
 {
-  "name": "authentication_temp",
+  "name": "next-temp",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "bin": "./scripts/create-template.mjs",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
