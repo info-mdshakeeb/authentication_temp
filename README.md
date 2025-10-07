@@ -1,4 +1,4 @@
-# Authentication Temp
+# Next.js Starter Template
 
 A modern, scalable authentication starter built with [Next.js](https://nextjs.org), TypeScript, and Tailwind CSS. This project provides a robust foundation for building secure, production-ready web applications
 
