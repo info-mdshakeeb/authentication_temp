@@ -13,6 +13,49 @@ import { fileURLToPath } from 'node:url';
 const templateRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CHANGESET_PACKAGE = '@changesets/cli';
 const CHANGESET_VERSION = '^2.29.7';
+const DEFAULT_GITIGNORE = `# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+`;
 
 function normalizeYesNo(value) {
   if (typeof value !== 'string') {
@@ -338,6 +381,30 @@ async function ensureChangesetAssets(destDir, includeChangesets) {
   await removeIfExists(changesetDir);
 }
 
+async function ensureGitignore(destDir) {
+  const targetPath = join(destDir, '.gitignore');
+  if (existsSync(targetPath)) {
+    return;
+  }
+
+  const templateGitignore = join(templateRoot, '.gitignore');
+  let content = DEFAULT_GITIGNORE;
+
+  if (existsSync(templateGitignore)) {
+    try {
+      content = await readFile(templateGitignore, 'utf8');
+    } catch (error) {
+      console.warn(`Failed to read template .gitignore: ${error.message}. Using default fallback.`);
+    }
+  }
+
+  if (!content.endsWith('\n')) {
+    content = `${content}\n`;
+  }
+
+  await writeFile(targetPath, content, 'utf8');
+}
+
 async function updatePackageJson(destDir, answers) {
   const packageJsonPath = join(destDir, 'package.json');
   const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
@@ -445,6 +512,7 @@ async function main() {
   console.log(`\nCopying files into ${targetDir}...`);
   await copyTemplate(targetDir);
 
+  await ensureGitignore(targetDir);
   await ensureChangesetAssets(targetDir, includeChangesets);
   await updatePackageJson(targetDir, { projectName, description, includeChangesets });
   await resetReadme(targetDir, projectName);

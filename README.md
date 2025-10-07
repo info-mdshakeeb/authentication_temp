@@ -25,7 +25,7 @@ Kickstart a production-ready authentication experience with [Next.js](https://ne
    - `--changesets yes|no`, `--with-changesets`, `--no-changesets`
    - `--git yes|no`, `--git-init`, `--no-git`
    - `--force` to overwrite existing directories
-     The scaffold finishes by clearing the README to a simple placeholder and omitting repository-only files (`LICENSE`, `CHANGELOG.md`, generator scripts) so you can replace them with project-specific docs.
+     The scaffold finishes by clearing the README to a simple placeholder, restoring a fresh `.gitignore`, and omitting repository-only files (`LICENSE`, `CHANGELOG.md`, generator scripts) so you can replace them with project-specific docs.
    - Prefer GitHub UI instead? Click **Use this template → Create a new repository**.
 
 2. **Install dependencies**
@@ -127,16 +127,6 @@ pnpm build
 ```
 
 ---
-
-## 📦 Release workflow
-
-If you scaffolded with Changesets enabled, use this flow:
-
-1. Create a branch for your change.
-2. Run `pnpm changeset` and follow the prompts to note the update.
-3. Commit your code + the generated `.changeset/*.md` file.
-4. When changes land on `main`, run `pnpm release` to bump versions and update the changelog.
-5. Tag the release (`git tag vX.Y.Z && git push origin vX.Y.Z`) and publish on GitHub.
 
 ## 👨‍💻 Maintainer
 
