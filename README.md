@@ -1,84 +1,147 @@
-# Next.js Starter Template
+# Next Temp · Next.js Authentication Template
 
-A modern, scalable authentication starter built with [Next.js](https://nextjs.org), TypeScript, and Tailwind CSS. This project provides a robust foundation for building secure, production-ready web applications
+Kickstart a production-ready authentication experience with [Next.js](https://nextjs.org), TypeScript, and Tailwind CSS. This repository doubles as a **GitHub template**, giving you a clean starting point for secure, modern web apps.
 
-## Features
+---
 
-- ⚡️ Next.js 15 (App Router, Server Components)
-- 🛡️ TypeScript strict mode for type safety
-- 🎨 Tailwind CSS for rapid UI development
-- 🔒 Ready for secure authentication flows
-- 🧩 Modular, scalable project structure
-- 🛠️ ESLint & Prettier for code quality
-- 🌱 Environment variable management with Zod
+## 🚀 Quick start
 
-## Tech Stack
+1. **Create your project**
 
-- [Next.js](https://nextjs.org/) 15
-- [React](https://react.dev/) 19
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Zod](https://zod.dev/) for schema validation
-- [ESLint](https://eslint.org/) for linting
+   - On GitHub, click **Use this template → Create a new repository**.
+   - Or scaffold locally with degit:
+     ```bash
+     npx degit info-mdshakeeb/next_temp my-app
+     cd my-app
+     git init && git add . && git commit -m "chore: bootstrap from template"
+     ```
 
-## Getting Started
-
-1. **Install dependencies:**
+2. **Install dependencies**
 
    ```bash
    pnpm install
-   # or
-   npm install
-   # or
-   yarn install
+   # npm install | yarn install also work, but pnpm is recommended
    ```
 
-2. **Run the development server:**
+3. **Configure environment variables**
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Generate a fresh `AUTH_SECRET` (e.g. `openssl rand -base64 32`) and fill in any other variables you enable.
+
+4. **Run the dev server**
 
    ```bash
    pnpm dev
-   # or
-   npm run dev
-   # or
-   yarn dev
    ```
 
-   Open [http://localhost:3000](http://localhost:3000) to view the app.
+   Visit [http://localhost:3000](http://localhost:3000) to see the starter.
 
-3. **Build for production:**
-
+5. **Ship it**
    ```bash
    pnpm build
-   # or
-   npm run build
-   # or
-   yarn build
+   pnpm start
    ```
 
-## Project Structure
+---
 
-- `src/app/` — Main application code (pages, layouts, components)
-- `public/` — Static assets
-- `tsconfig.json` — TypeScript configuration
-- `eslint.config.mjs` — ESLint configuration
+## ✨ Features
 
-## Contributing
+- ⚡️ Next.js 15 (App Router, Server Components)
+- 🛡️ Strict TypeScript everywhere
+- 🎨 Tailwind CSS with PostCSS 4
+- 🔐 Ready for custom auth flows with `@t3-oss/env-nextjs`
+- 🧰 ESLint 9 + Prettier-friendly config
+- ♻️ Changesets-powered release workflow
+- 🤖 Automated dependency updates via Dependabot
 
-We love community involvement! Here's the quickest way to get started:
+---
 
-1. Check the open [issues](https://github.com/info-mdshakeeb/authentication_temp/issues) or raise a new one describing the problem.
-2. Create a feature branch from `dev` (`git checkout -b feature/my-change`).
-3. Run the quality checks locally: `pnpm install` then `pnpm lint`.
-4. Open a pull request and fill in the template. The CI checks (see below) must pass before merge.
+## 🧱 Project structure
 
-## Continuous Integration
+```
+src/
+  app/         # Routes, layouts, and UI
+  components/  # Shared UI primitives
+  hooks/       # Reusable hooks
+  env.js       # Runtime-safe environment management
+public/        # Static assets
+.github/       # CI, templates, Dependabot
+.changeset/    # Release notes + version strategy
+```
 
-Every pull request triggers an automated lint check via GitHub Actions to keep the codebase healthy.
+---
 
-## Maintainer
+## 🔧 Available scripts
 
-This project is maintained by **Shakeeb**. Feel free to reach out via issues for questions or suggestions.
+| Command          | Description                                |
+| ---------------- | ------------------------------------------ |
+| `pnpm dev`       | Run Next.js in development with Turbopack  |
+| `pnpm build`     | Create an optimized production build       |
+| `pnpm start`     | Serve the production build                 |
+| `pnpm lint`      | Run ESLint across the project              |
+| `pnpm changeset` | Record a changeset entry for releases      |
+| `pnpm release`   | Apply pending changesets and bump versions |
 
-## License
+---
 
-This project is open source and available under the [MIT License](LICENSE).
+## 🔐 Environment variables
+
+All required values live in [`src/env.js`](./src/env.js) and are validated with Zod.
+
+| Variable      | Required  | Description                         |
+| ------------- | --------- | ----------------------------------- |
+| `AUTH_SECRET` | ✅ (prod) | Secret used by auth/session tooling |
+| `NODE_ENV`    | auto      | Managed by Next.js                  |
+
+Add client-safe variables with the `NEXT_PUBLIC_` prefix and map them in `env.js`.
+
+---
+
+## 🧪 Quality gates
+
+GitHub Actions runs `pnpm lint` on every push and pull request. Extend the workflow with `pnpm test` and `pnpm build` as your project evolves.
+
+Locally, run:
+
+```bash
+pnpm lint
+pnpm test   # when tests are added
+pnpm build
+```
+
+---
+
+## 📦 Release workflow
+
+1. Create a branch for your change.
+2. Run `pnpm changeset` and follow the prompts to note the update.
+3. Commit your code + the generated `.changeset/*.md` file.
+4. When changes land on `main`, run `pnpm release` to bump versions and update the changelog.
+5. Tag the release (`git tag vX.Y.Z && git push origin vX.Y.Z`) and publish on GitHub.
+
+---
+
+## 🤝 Contributing
+
+- Read the [Contributing Guide](./CONTRIBUTING.md) for branching, commits, and testing expectations.
+- Review the [Code of Conduct](./CODE_OF_CONDUCT.md) to ensure a welcoming community.
+- Open issues using the provided templates:
+  - [Bug report](./.github/ISSUE_TEMPLATE/bug_report.md)
+  - [Feature request](./.github/ISSUE_TEMPLATE/feature_request.md)
+
+Pull requests should target `main` and must pass CI.
+
+---
+
+## 👨‍💻 Maintainer
+
+Created and maintained by **Shakeeb**. Questions or suggestions? Open an issue at [info-mdshakeeb/next_temp/issues](https://github.com/info-mdshakeeb/next_temp/issues).
+
+---
+
+## 📄 License
+
+Released under the [MIT License](./LICENSE). Have fun and build something great!
